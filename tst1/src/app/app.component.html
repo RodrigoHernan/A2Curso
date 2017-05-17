@@ -1,0 +1,119 @@
+<h1>
+  {{title}}
+</h1>
+
+<button  md-raised-button class="mat-raised-button"><span class="mat-button-wrapper">Raised button</span>
+<!----><div class="mat-button-ripple mat-ripple" md-ripple></div>
+
+<div class="mat-button-focus-overlay"></div>
+</button>
+
+<div *ngFor="let voto of votos">
+ <my-component-input voto="{{voto.title}}" Variable2="{{voto.hola}}" (addVoto)="addVoto($event)"></my-component-input>
+</div>
+
+<p gigant Amarillito>{{votacion}}</p>
+
+<h2>Conversor</h2>
+
+<div> Cantidad <input [(ngModel)]="cantidad"/></div>
+<div>1 dolar es: <input [(ngModel)]="factor"/></div>
+
+<p>o es : {{cantidad | ConversorPipe:factor}}
+
+</p>
+
+
+
+
+<!--forms comunes-->
+
+<!--<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <div>
+  <label for="nameImput">Nombre</label>
+  <input type="text" id="nameInput" placeholder="Nombre" name="nombre" ngModel>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>-->
+
+<!--forms reactivos-->
+<h1>  reactivos</h1>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+  <div>
+  <label for="nameImput">Nombre</label>
+  <input type="text" id="nameInput" placeholder="Nombre" 
+  name="nombre" [formControl]="myForm.controls['name']"/>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+
+<p>Observer</p>
+
+
+<button md-ripple md-button  (click)="increment()"> incrementar</button>
+<button md-raised-button (click)="decrement()"> decrement</button>
+<button (click)="reset()"> reset</button>
+<div>Contador: {{counter | async}}</div>
+
+<button (click)="increment()"> incrementar</button>
+<button (click)="decrement()"> decrement</button>
+<button md-ripple (click)="pan()"> PANDERETA</button>
+<div md-ripple > Contador: {{gato | async}}</div>
+
+
+<p gigant> Progress: {{progress}} % </p>
+<p *ngIf="progress >=100"> done processing  {{label}} of angular zone  </p>
+
+<button (click)="ProcesswhithinAngularZone()"> con Angular ZOne</button>
+<button (click)="ProcessOutsideAngularZone()"> sin Angular ZOne</button>
+
+
+<h1>Login Firebase</h1>
+<div> {{ (user | async)?.uid }} </div>
+<div> {{ (user | async)?.email }} </div>
+<!--<div> {{ (user | async) | json}} </div> entrega el json del alemento asyncronico lo saco porque es muy largo -->
+<img *ngIf="(user | async)?.uid != null " src="{{(user | async)?.photoURL}}" >
+<img *ngIf="(user | async)?.uid != null " [src]="(user | async)?.photoURL" >
+<p></p>
+  <button (click)="login()">Login</button>
+  <button (click)="logout()">Logout</button>
+
+
+servicio de firebase 
+  <ul>
+    <li *ngFor="let item of ticketsFire | async">
+       {{ item | json }}
+       <b><br> Ticket N: {{item.id}}</b>
+       <!--<img [src]="item.imagen" alt="imagen">-->
+        <button (click)="baja(item.$key)">B</button>
+        <button (click)="modificacion(item.$key,'hola')">M</button>-->
+    </li>
+  </ul>
+       <!--<button (click)="alta()">A</button>-->
+<input type="text" #newitem />
+  <button (click)="alta(newitem.value)">A</button>
+
+  servicio
+<ul>
+    <li *ngFor="let ticket of tickets" (click)="verTicket(ticket.id)">
+            <b>Ticket N: {{ticket.id}}</b> - {{ticket.titulo}}
+              <span Amarillito>[ {{ticket.estado}} ] </span>
+    </li>
+</ul>
+
+  MONGODB
+<ul>
+    <li *ngFor="let ticket of ticketMongo" (click)="verTicket(ticket.id)">
+            <b>Ticket N: {{ticket.id}}</b> - {{ticket.titulo}}
+              <span Amarillito>[ {{ticket.estado}} ] </span>
+              <button (click)="verMongoTicket(ticket.id)">ver</button>
+              <button (click)="UpdateMongoTicket(ticket.id)">Update</button>
+              <button (click)="RemoveMongoTicket(ticket.id)">bORRAR</button>
+    </li>
+</ul>
+
+
+<img src="" alt="">
+<input type="file" (change)="onChange($event)"/>

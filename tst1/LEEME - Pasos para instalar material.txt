@@ -1,0 +1,24 @@
+npm install --save @angular/material
+npm install --save hammerjs
+npm install --save-dev @types/hammerjs
+
+//Appmodule 
+import {MaterialModule} from '@angular/material';
+import 'hammerjs';
+
+    //En imports
+    imports: [.....
+    MaterialModule.forRoot(),
+    ..]
+
+//tsconfig.app.json
+"types": [
+    "hammerjs"
+]
+
+//index.html
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+

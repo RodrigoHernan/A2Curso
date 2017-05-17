@@ -1,0 +1,41 @@
+//actualizar material 
+npm install @angular/common@latest @angular/compiler@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest typescript@latest --save
+
+//instalar dependencias
+npm install --save @angular/material
+npm install --save @angular/animations
+npm install --save hammerjs
+
+
+//app.module.ts
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MaterialModule} from '@angular/material';
+import 'hammerjs';
+
+
+  imports: [
+    ..
+    MaterialModule.forRoot(),
+     BrowserAnimationsModule,
+     ..   
+  ],
+
+
+  //style.css
+    //estilos predeterminados que se pueden utilizar 
+        deeppurple-amber.css
+        indigo-pink.css
+        pink-bluegrey.css
+        purple-green.css
+   @import '~@angular/material/prebuilt-themes/[estilopredeterminado]' 
+
+  @import '~@angular/material/prebuilt-themes/deeppurple-amber.css' 
+
+
+  //index
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+fuentes 
+https://material.angular.io/guide/getting-started
+https://material.angular.io/guide/theming
