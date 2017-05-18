@@ -86,8 +86,8 @@ this.traerTicketsMongo();
   this.user = afAuth.authState;
   this.ticketsFire =  db.list('/items');
   console.log(this.ticketsFire)
-  //items.push({'id': 3, 'titulo': 'no me funciona el celular', 'estado': 'in progress'});
-  //items.push({'id': 4, 'titulo': 'no me funciona una lampara', 'estado': 'really'} );
+  //ticketsFire.push({'id': 3, 'titulo': 'no me funciona el celular', 'estado': 'in progress'});
+  //ticketsFire.push({'id': 4, 'titulo': 'no me funciona una lampara', 'estado': 'really'} );
   
   
 }

@@ -39,15 +39,23 @@ import { TICKETS } from './mocks/tickets.mocks';
         .catch(this.handleError);
     }
     //removeTicketMongo
-        removeTicketMongo(idNumer:number):Promise<any[]>{
-        return this.http.post(this.urlBaackEnd + 'ticketRemove', 
-        {"id": idNumer})
-        .toPromise()
-        .then(this.extractData)
-        .catch(this.handleError);
-    }
+    //     removeTicketMongo(idNumer:number):Promise<any[]>{
+    //     return this.http.post(this.urlBaackEnd + 'ticketRemove', 
+    //     {"id": idNumer})
+    //     .toPromise()
+    //     .then(this.extractData)
+    //     .catch(this.handleError);
+    // }
+            removeTicketMongo(idNumer:number):Promise<any[]>{
+                return this.post(this.urlBaackEnd , 'ticketRemove', {"id": idNumer} );
+            }
 
-
+        private post(url : string, accion: string,body : any){
+        return this.http.post(url + accion ,body)
+            .toPromise()
+            .then(this.extractData)
+            .catch(this.handleError);     
+        }
 
         private extractData(res: Response){
             let body = res.json();
@@ -70,14 +78,15 @@ import { TICKETS } from './mocks/tickets.mocks';
         }
 
         getTickets(){ 
-                //   return "gatoo" ;
+          
             return TICKETS;     // regresamos todos los tickets   
-        }        getVariableGlobal():string{          
+        }      
+         getVariableGlobal():string{          
             return this.miVariableTicketGlobal;         
         }   
          getTicket(id:number){ 
             let ticket = TICKETS.find(x => x.id == id);
-          return ticket;     // regresamos todos los tickets
+          return ticket;     
          }   
 
          getTicketObserver(id){
